@@ -5,6 +5,7 @@ if [ -z ${SPARQL_ENDPOINT+x} ]; then SPARQL_ENDPOINT='https://databus.dbpedia.or
 
 echo "Creating LOCK at ${TARGET_DIR}"
 touch "${TARGET_DIR}/download.lck"
+echo "SAVE THE DATE ;)" 
 echo now > last_update.txt
 cd /client/target
 
