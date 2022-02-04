@@ -1,0 +1,9 @@
+version: "3.0"
+services:
+  databus-download:
+    image: dbpedia/dbpedia-databus-collection-downloader:latest
+    environment:
+      COLLECTION_URI: https://databus.dbpedia.org/cringwald/collections/light
+      TARGET_DIR: /root/data
+    volumes:
+      - /appli/databus-data:/root/data
