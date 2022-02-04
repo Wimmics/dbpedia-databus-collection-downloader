@@ -6,4 +6,4 @@ services:
       COLLECTION_URI: https://databus.dbpedia.org/cringwald/collections/light
       TARGET_DIR: /root/data
     volumes:
-      - /appli/databus-data:/root/data
+      - /appli/databus-data/french-chapter/:/root/data
