@@ -6,4 +6,4 @@ services:
       COLLECTION_URI: https://databus.dbpedia.org/cringwald/collections/french_chapter
       TARGET_DIR: /root/data
     volumes:
-      - ./download:/root/data
+      - /appli/databus-data:/root/data
