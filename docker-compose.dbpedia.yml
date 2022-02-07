@@ -1,7 +1,9 @@
 version: "3.0"
 services:
   databus-download:
-    image: dbpedia/dbpedia-databus-collection-downloader:latest
+    build :
+       context: ./client
+       dockerfile: Dockerfile
     environment:
       COLLECTION_URI: https://databus.dbpedia.org/cringwald/collections/french_chapter
       TARGET_DIR: /root/data
