@@ -42,9 +42,6 @@ then
 	rm "${TARGET_DIR}/${tempoDIR}/download.lck";
 	echo "[DOWNLOAD] Data in the pocket ! ";
 	
-	echo "---------------------------------";
-	set +e
-	
 	echo "[ARCHIVE] archive old data and moove new one into lastUpdate dir"
 	newDIR="lastUpdate";
 	oldDIR="$lastUpdate" ;
@@ -84,6 +81,9 @@ then
 	
 	
 	
+	set +e
+	
+	echo "--------------------------------- OUT of sensitive zone";
 
 else 
 	echo "[END PROCESS] data already up-to-date :) ";
