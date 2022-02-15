@@ -38,53 +38,62 @@ then
 	echo "-historic artefact- Creating LOCK at ${TARGET_DIR}/${tempoDIR}";
 	touch "${TARGET_DIR}/${tempoDIR}/download.lck";
 	cd /client/target
+	
 	java -jar minimal-download-client-0.0.1-SNAPSHOT.jar -p ${TARGET_DIR}/${tempoDIR} -c ${COLLECTION_URI} -s ${SPARQL_ENDPOINT} -g ${GRAPH_MODE};
 	rm "${TARGET_DIR}/${tempoDIR}/download.lck";
-	echo "[DOWNLOAD] Data in the pocket ! ";
-	
-	echo "[ARCHIVE] archive old data and moove new one into lastUpdate dir"
-	newDIR="lastUpdate";
-	oldDIR="$lastUpdate" ;
-	mkdir -p ${TARGET_DIR}/${newDIR} ;
-	mv ${TARGET_DIR}/${tempoDIR}/*  ${TARGET_DIR}/${newDIR};
-	rm -rf  ${TARGET_DIR}/${tempoDIR};
-	
-	#now=$(date +%Y-%m-%d);
+	exitValue=$? 
 
-	if [[ -d ${TARGET_DIR}/${newDIR} ]] && [[ -f "$fileUPDT" ]];
-	then
-		if [[ "$(ls -A ${TARGET_DIR}/${newDIR})" ]]; then
-			echo "[ARCHIVE] we already have data from last releases, we archive it.";
-	     	mkdir -p ${TARGET_DIR}/oldReleases ;
-	     	nb_files=$(ls ${TARGET_DIR}/oldReleases/ | wc -l);
-			echo "[ARCHIVE] We have $nb_files files archived.";
-	     	if [[ $nb_files > 5 ]]; then
-	     		DIFFERENCE=$((nb_files-5));
-				echo "[ARCHIVE]  So we need to delete $DIFFERENCE files";
-	     		xargs rm -f <<< $(ls ${TARGET_DIR}/oldReleases/* | sort -n | head -${DIFFERENCE});
-	     	fi
-	     	tar -zcvf ${TARGET_DIR}/oldReleases/${oldDIR}.tar.gz ${TARGET_DIR}/${newDIR}; 
-			rm -rf ${TARGET_DIR}/${newDIR}/*;
+	if [[ $exitValue != 0 ]]; then 
+		echo "/!\ DATABUS HAVE DIFFICULTIES TO GET DATA....";
+		exit $exitValue
+	else
+		echo "[DOWNLOAD] Data in the pocket ! ";
+	
+		echo "[ARCHIVE] archive old data and moove new one into lastUpdate dir"
+		newDIR="lastUpdate";
+		oldDIR="$lastUpdate" ;
+		mkdir -p ${TARGET_DIR}/${newDIR} ;
+		mv ${TARGET_DIR}/${tempoDIR}/*  ${TARGET_DIR}/${newDIR};
+		rm -rf  ${TARGET_DIR}/${tempoDIR};
+
+		#now=$(date +%Y-%m-%d);
+
+		if [[ -d ${TARGET_DIR}/${newDIR} ]] && [[ -f "$fileUPDT" ]];
+		then
+			if [[ "$(ls -A ${TARGET_DIR}/${newDIR})" ]]; then
+				echo "[ARCHIVE] we already have data from last releases, we archive it.";
+			mkdir -p ${TARGET_DIR}/oldReleases ;
+			nb_files=$(ls ${TARGET_DIR}/oldReleases/ | wc -l);
+				echo "[ARCHIVE] We have $nb_files files archived.";
+			if [[ $nb_files > 5 ]]; then
+				DIFFERENCE=$((nb_files-5));
+					echo "[ARCHIVE]  So we need to delete $DIFFERENCE files";
+				xargs rm -f <<< $(ls ${TARGET_DIR}/oldReleases/* | sort -n | head -${DIFFERENCE});
+			fi
+			tar -zcvf ${TARGET_DIR}/oldReleases/${oldDIR}.tar.gz ${TARGET_DIR}/${newDIR}; 
+				rm -rf ${TARGET_DIR}/${newDIR}/*;
+			fi
+		else
+			echo "[ARCHIVE] no data to archive";
 		fi
-	else
-		echo "[ARCHIVE] no data to archive";
-	fi
-	
-	echo "---------------------------------";
-	if  [[ "$(ls -A ${TARGET_DIR}/${newDIR})" ]]; then
-		echo "$date_in_db" > ${TARGET_DIR}/last_update.txt;
-		echo "[END PROCESS] Save last date of update";
-	else
-		echo "[END PROCESS] no data to archive";
-	fi
-	echo "-historic artefact- Removing LOCK at /${newDIR}${TARGET_DIR}";
-	
-	
-	
-	set +e
-	
-	echo "--------------------------------- OUT of sensitive zone";
 
+		echo "---------------------------------";
+		if  [[ "$(ls -A ${TARGET_DIR}/${newDIR})" ]]; then
+			echo "$date_in_db" > ${TARGET_DIR}/last_update.txt;
+			echo "[END PROCESS] Save last date of update";
+		else
+			echo "[END PROCESS] no data to archive";
+		fi
+		echo "-historic artefact- Removing LOCK at /${newDIR}${TARGET_DIR}";
+
+
+
+		set +e
+
+		echo "--------------------------------- OUT of sensitive zone";
+
+	fi ;
+	
 else 
 	echo "[END PROCESS] data already up-to-date :) ";
 fi  
