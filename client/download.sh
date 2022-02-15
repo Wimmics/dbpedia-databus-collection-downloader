@@ -40,8 +40,8 @@ then
 	cd /client/target
 	
 	java -jar minimal-download-client-0.0.1-SNAPSHOT.jar -p ${TARGET_DIR}/${tempoDIR} -c ${COLLECTION_URI} -s ${SPARQL_ENDPOINT} -g ${GRAPH_MODE};
+	exitValue=$? ;
 	rm "${TARGET_DIR}/${tempoDIR}/download.lck";
-	exitValue=$? 
 
 	if [[ $exitValue != 0 ]]; then 
 		echo "/!\ DATABUS HAVE DIFFICULTIES TO GET DATA....";
