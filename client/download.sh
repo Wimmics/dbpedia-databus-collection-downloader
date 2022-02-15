@@ -28,10 +28,32 @@ echo "[LAST RELEASE] last release date is : $date_in_db";
 echo "---------------------------------";
 if [[ $startd != $lastUpdate ]] && [[ $startd > $lastUpdate ]];
 then
-	echo "[ARCHIVE] new dataset found > download new one and archive last data";
+	### ERROR SENSITIVE !
+    	set -e
+	
+	tempoDIR="tempo";	
+	mkdir -p ${TARGET_DIR}/${tempoDIR} ;
+	echo "---------------------------------";
+	echo "[DOWNLOAD] Begin download of data artefacts...";
+	echo "-historic artefact- Creating LOCK at ${TARGET_DIR}/${tempoDIR}";
+	touch "${TARGET_DIR}/${tempoDIR}/download.lck";
+	cd /client/target
+	java -jar minimal-download-client-0.0.1-SNAPSHOT.jar -p ${TARGET_DIR}/${tempoDIR} -c ${COLLECTION_URI} -s ${SPARQL_ENDPOINT} -g ${GRAPH_MODE};
+	rm "${TARGET_DIR}/${tempoDIR}/download.lck";
+	echo "[DOWNLOAD] Data in the pocket ! ";
+	
+	echo "---------------------------------";
+	set +e
+	
+	echo "[ARCHIVE] archive old data and moove new one into lastUpdate dir"
 	newDIR="lastUpdate";
 	oldDIR="$lastUpdate" ;
 	mkdir -p ${TARGET_DIR}/${newDIR} ;
+	mv ${TARGET_DIR}/${tempoDIR}/*  ${TARGET_DIR}/${newDIR};
+	rm -rf  ${TARGET_DIR}/${tempoDIR};
+	
+	#now=$(date +%Y-%m-%d);
+
 	if [[ -d ${TARGET_DIR}/${newDIR} ]] && [[ -f "$fileUPDT" ]];
 	then
 		if [[ "$(ls -A ${TARGET_DIR}/${newDIR})" ]]; then
@@ -51,17 +73,6 @@ then
 		echo "[ARCHIVE] no data to archive";
 	fi
 	
-
-	now=$(date +%Y-%m-%d);
-
-	echo "---------------------------------";
-	echo "[DOWNLOAD] Begin download of data artefacts...";
-	echo "-historic artefact- Creating LOCK at ${TARGET_DIR}/${newDIR}";
-	touch "${TARGET_DIR}/${newDIR}/download.lck";
-	cd /client/target
-	java -jar minimal-download-client-0.0.1-SNAPSHOT.jar -p ${TARGET_DIR}/${newDIR} -c ${COLLECTION_URI} -s ${SPARQL_ENDPOINT} -g ${GRAPH_MODE};
-	rm "${TARGET_DIR}/${newDIR}/download.lck";
-	echo "[DOWNLOAD] Data in the pocket ! ";
 	echo "---------------------------------";
 	if  [[ "$(ls -A ${TARGET_DIR}/${newDIR})" ]]; then
 		echo "$date_in_db" > ${TARGET_DIR}/last_update.txt;
@@ -70,6 +81,10 @@ then
 		echo "[END PROCESS] no data to archive";
 	fi
 	echo "-historic artefact- Removing LOCK at /${newDIR}${TARGET_DIR}";
+	
+	
+	
+
 else 
 	echo "[END PROCESS] data already up-to-date :) ";
 fi  
