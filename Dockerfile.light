@@ -1,0 +1,17 @@
+FROM alpine:latest
+
+USER root
+
+# To be able to download `ca-certificates` with `apk add` command
+RUN apk add --no-cache ca-certificates && \
+    update-ca-certificates
+RUN apk add --no-cache \
+    curl \
+    bash \
+    openssl
+
+COPY ./light_app /light_app
+
+WORKDIR /light_app
+
+ENTRYPOINT /bin/bash download_light.sh

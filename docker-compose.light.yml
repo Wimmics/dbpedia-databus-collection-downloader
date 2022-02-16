@@ -2,11 +2,9 @@ version: "3.0"
 services:
   databus-download:
     build :
-       context: ./client
-       dockerfile: Dockerfile
-    image: dbpedia/dbpedia-databus-collection-downloader:latest
-    environment:
-      COLLECTION_URI: https://databus.dbpedia.org/cringwald/collections/light
-      TARGET_DIR: /root/data
+       context: .
+       dockerfile: Dockerfile.light
+    image: dbpedia/dbpedia-databus-collection-downloader:new
+    env_file: .env.light
     volumes:
-      - /appli/databus-data/french-chapter/:/root/data
+      - /appli/databus-data/:/root/data
