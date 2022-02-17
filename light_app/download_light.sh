@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 if [ -z ${TARGET_DIR+x} ]; then TARGET_DIR='/root/data'; fi
+if [ -z ${LOOKUP_DIR+x} ]; then LOOKUP_DIR=''; fi
+
 echo "WORKING DIR IS ${TARGET_DIR}";
 echo "---------------------------------";
 
@@ -49,8 +51,25 @@ then
 	done <<< "$files"
 	
 	rm "${TARGET_DIR}/${tempoDIR}/download.lck";
-	echo "[DOWNLOAD] Data in the pocket ! ";
+       
+        if [[ ${LOOKUP_DIR} != '' ]];then
+		echo "[LOOKUP] Update lookup data ";
+		rm -rf ${LOOKUP_DIR};
+		mkdir -p "${LOOKUP_DIR}";
+		declare -a LIST_FILES=("dbpedia_generic_labels" "dbpedia_generic_redirects" "dbpedia_text_short-abstracts" "dbpedia_mappings_mappingbased-objects" "dbpedia_mapping_instance-type");
+		# Iterate the string array using for loop
+		for val in ${LIST_FILES[@]}; do
+	    		echo "---------------"
+	    		echo "looking for $val files";
+	    		echo "---------------"
+	    		for FILE in $(find ${TARGET_DIR}/${tempoDIR} -type f -name "$val*");   do
+	        		cp $FILE "${LOOKUP_DIR}";
+	        		echo "> found : ${FILE}";
+	    		done
+		done
+	fi
 
+ 
 	echo "[ARCHIVE] archive old data and moove new one into lastUpdate dir"
 	cd ${TARGET_DIR}
 	newDIR="lastUpdate";

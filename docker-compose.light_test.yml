@@ -1,0 +1,14 @@
+version: "3.0"
+services:
+  databus-download-test:
+    build :
+       context: .
+       dockerfile: Dockerfile.light
+    image: dbpedia/dbpedia-databus-collection-downloader:new
+    environment: 
+       - LOOKUP_DIR=/appli/dbpedia_proj-data/lookup/
+       - COLLECTION_URI=https://databus.dbpedia.org/cringwald/collections/light
+
+
+    volumes:
+       - /appli/test/:/root/data
