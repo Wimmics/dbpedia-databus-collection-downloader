@@ -5,6 +5,7 @@ if [ -z ${LOOKUP_DIR+x} ]; then LOOKUP_DIR=''; fi
 echo "WORKING DIR IS ${TARGET_DIR}";
 echo "---------------------------------";
 
+touch "${TARGET_DIR}/download_locker.lck";
 fileUPDT=${TARGET_DIR}/last_update.txt;
 echo "update file is  ${fileUPDT}";
 
@@ -32,6 +33,7 @@ if [[ $startd != $lastUpdate ]] && [[ $startd > $lastUpdate ]]; then echo " $sta
 echo "---------------------------------";
 if [[ $startd != $lastUpdate ]] && [[ $startd > $lastUpdate ]];
 then
+	
 	echo "---------------------------------";
 	echo "[DOWNLOAD] Begin download of data artefacts...";
 
@@ -41,7 +43,6 @@ then
         cd ${TARGET_DIR}/${tempoDIR};
 
         ### DOWNLOAD DATA
-	touch "${TARGET_DIR}/${tempoDIR}/download.lck";
 	query2=$(curl -H "Accept:text/sparql" ${COLLECTION_URI})
 	files=$(curl -H "Accept: text/csv" --data-urlencode "query=${query2}" https://databus.dbpedia.org/repo/sparql | tail -n+2 | sed 's/"//g')
 	while IFS= read -r file ; do
@@ -116,4 +117,6 @@ then
 else 
 	echo "[END PROCESS] data already up-to-date";
 fi  
+
+rm "${TARGET_DIR}/download_locker.lck";
 echo "[END PROCESS] See you !";
