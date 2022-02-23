@@ -6,6 +6,12 @@ echo "WORKING DIR IS ${TARGET_DIR}";
 echo "---------------------------------";
 
 touch ${TARGET_DIR}/download_locker.lck;
+if test -f "${TARGET_DIR}/download_locker.lck"; then
+	echo "locker created";
+else
+	echo "locker NOT CREATED....";
+fi
+
 fileUPDT=${TARGET_DIR}/last_update.txt;
 echo "update file is  ${fileUPDT}";
 
