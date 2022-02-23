@@ -5,7 +5,7 @@ if [ -z ${LOOKUP_DIR+x} ]; then LOOKUP_DIR=''; fi
 echo "WORKING DIR IS ${TARGET_DIR}";
 echo "---------------------------------";
 
-touch "${TARGET_DIR}/download_locker.lck";
+touch ${TARGET_DIR}/download_locker.lck;
 fileUPDT=${TARGET_DIR}/last_update.txt;
 echo "update file is  ${fileUPDT}";
 
