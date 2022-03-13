@@ -123,7 +123,7 @@ then
 else 
 	echo "[END PROCESS] data already up-to-date";
 fi  
-mkdir ${TARGET_DIR}/${newDIR}/meta_base/
-cp ./dbpedia_fr-metadata.ttl ${TARGET_DIR}/${newDIR}/meta_base/dbpedia_fr-metadata.ttl
+mkdir ${TARGET_DIR}/lastUpdate/meta_base/
+cp ./dbpedia_fr-metadata.ttl ${TARGET_DIR}/lastUpdate/meta_base/dbpedia_fr-metadata.ttl
 rm "${TARGET_DIR}/download_locker.lck";
 echo "[END PROCESS] See you !";
