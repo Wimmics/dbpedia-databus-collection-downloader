@@ -19,30 +19,51 @@
 @prefix dbr_fr:   <http://fr.dbpedia.org/resource/>.
 @prefix dbr_wd:   <http://wikidata.dbpedia.org/resource/>.
 
+db_fr:
+    a dcat:Dataset, void:Dataset, schema:Dataset, prov:Entity,  sd:defaultGraph  ;
 
-# --- SPARQL Service Description and DCAT DataService
-db_fr:sparql-service
-    a                    sd:Service, dcat:DataService, prov:Entity ;
-    sd:supportedLanguage sd:SPARQL10Query, sd:SPARQL11Query;
-    sd:endpoint          <http://fr.dbpedia.org/sparql>;      
-    dcat:endpointURL     <https://covidontheweb.inria.fr/sparql>;
-    dcat:endpointURL     <http://fr.dbpedia.org/sparql>;
-    sd:resultFormat <http://www.w3.org/ns/formats/Turtle>, <http://www.w3.org/ns/formats/RDF_XML>, <http://www.w3.org/ns/formats/N3>, <http://www.w3.org/ns/formats/N-Triples> ;
-    sd:feature sd:DereferencesURIs, sd:UnionDefaultGraph ;
-    rdfs:label           "SPARQL endpoint serving the DBpedia french chapter data"@en, "Point d'accès SPARQL aux données du chapitre francophone de DBpedia"@fr;     
+    dct:title       "French DBpedia"@en, "DBpédia en français"@fr ;
+    schema:name     "French DBpedia"@en, "DBpédia en français"@fr ;
+    skos:prefLabel  "French DBpedia"@en, "DBpédia en français"@fr ;
+    rdfs:label      "French DBpedia"@en, "DBpédia en français"@fr ;
+
+    dct:description "The French DBpedia chapter data is composed of extracted data from the French Wikipedia"@en, "DBpédia en français est issue d'une extraction du chapitre francophone de Wikipédia"@fr ;
+    schema:description  "The French DBpedia chapter data is composed of extracted data from the French Wikipedia"@en, "DBpédia en français est issue d'une extraction du chapitre francophone de Wikipédia"@fr ;
+    rdfs:comment        "The French DBpedia chapter data is composed of extracted data from the French Wikipedia"@en, "DBpédia en français est issue d'une extraction du chapitre francophone de Wikipédia"@fr ;
+
+    foaf:homepage       "http://fr.dbpedia.org/" ;
+    dcat:landingPage    "http://fr.dbpedia.org/" ;
     dct:creator      <https://team.inria.fr/wimmics/>;
-    schema:author    <https://team.inria.fr/wimmics/>;
+    schema:author    <https://team.inria.fr/wimmics/>;   
+
     dct:publisher    <https://ror.org/0496p8026>, <https://ror.org/02kvxyf05>, <https://ror.org/02feahw73>;
     schema:publisher <https://ror.org/0496p8026>, <https://ror.org/02kvxyf05>, <https://ror.org/02feahw73>;
-    dct:subject <https://dbpedia.org/page/DBpedia> ,<https://fr.dbpedia.org/page/DBpedia> , <https://dbpedia.org/page/French_language>, <https://dbpedia.org/page/Semantic_Web> ;
-    sd:defaultGraph      [
-            a sd:Graph, dcat:Dataset, void:Dataset, schema:Dataset; 
-            void:dataDump <http://prod-dbpedia.inria.fr/dumps/> ;
-            void:uriLookupEndpoint <http://prod-dbpedia.inria.fr/describe/?url=>
+    dcat:contactPoint   "celian.ringwald@inria.fr" ;
+
+    dct:licence     <https://creativecommons.org/licenses/by-nc/4.0/>;
+    schema:licence  <https://creativecommons.org/licenses/by-nc/4.0/>;
+    void:dataDump <http://prod-dbpedia.inria.fr/dumps/> ;
+    dcat:distribution [
+        a                   dcat:Distribution ;
+        dct:title           "Dumps of the data used for building this endpoint" ;
+        dcat:downloadUrl    <http://prod-dbpedia.inria.fr/dumps/> ;
+        dct:format          "text/turtle"
     ] ;
-    sd:availableGraphs [
-          a                sd:GraphCollection;
-        sd:namedGraph 
+
+    dcat:service db_fr:sparql ;
+    dcat:distribution [
+        a               dcat:Distribution ;
+        dct:title       "This dataset's endpoint" ;
+        dcat:accessURL  db_fr:sparql  ;
+        dcat:mediaType  "application/sparql-query"
+    ] ;
+
+    void:uriLookupEndpoint <http://prod-dbpedia.inria.fr/describe/?url=>;
+
+    dct:subject <https://dbpedia.org/page/DBpedia> ,<https://fr.dbpedia.org/page/DBpedia> , <https://dbpedia.org/page/French_language>, <https://dbpedia.org/page/Semantic_Web> ;
+
+    sd:namedGraph 
+        <http://fr.dbpedia.org/graph/metadata>,
         <http://fr.dbpedia.org/graph/dbpedia_generic_article-templates>,
         <http://fr.dbpedia.org/graph/dbpedia_generic_categories>,
         <http://fr.dbpedia.org/graph/dbpedia_generic_commons-sameas-links>,
@@ -75,16 +96,56 @@ db_fr:sparql-service
         <http://fr.dbpedia.org/graph/dbpedia_wikidata_mappingbased-literals>,
         <http://fr.dbpedia.org/graph/dbpedia_wikidata_mappingbased-objects-uncleaned>,
         <http://fr.dbpedia.org/graph/dbpedia_wikidata_sameas-all-wikis>,
-        <http://fr.dbpedia.org/graph/outlinks_yago_links>
-    ].
+        <http://fr.dbpedia.org/graph/outlinks_yago_links>.
 
-<https://ror.org/0496p8026> a foaf:Organization; foaf:name "University Côte d'Azur";
-    foaf:homepage <http://univ-cotedazur.fr>.
-<https://ror.org/02kvxyf05> a foaf:Organization; foaf:name "Inria";
+# --- SPARQL Service Description and DCAT DataService
+db_fr:sparql
+    a                    sd:Service, dcat:DataService, prov:Entity ;
+    sd:supportedLanguage sd:SPARQL10Query, sd:SPARQL11Query;
+    sd:endpoint          <http://fr.dbpedia.org/sparql>;      
+    dcat:endpointURL     <http://fr.dbpedia.org/sparql>;
+    sd:resultFormat <http://www.w3.org/ns/formats/Turtle>, <http://www.w3.org/ns/formats/RDF_XML>, <http://www.w3.org/ns/formats/N3>, <http://www.w3.org/ns/formats/N-Triples> ;
+    sd:feature sd:DereferencesURIs, sd:UnionDefaultGraph ;
+    rdfs:label           "SPARQL endpoint serving the DBpedia french chapter data"@en, "Point d'accès SPARQL aux données du chapitre francophone de DBpedia"@fr;     
+    dct:creator      <https://team.inria.fr/wimmics/>;
+    prov:wasAttributedTo <https://team.inria.fr/wimmics/>;
+    schema:author     <https://team.inria.fr/wimmics/>;
+    dct:publisher    <https://ror.org/0496p8026>, <https://ror.org/02kvxyf05>, <https://ror.org/02feahw73>, <https://team.inria.fr/wimmics/>;
+    schema:publisher <https://ror.org/0496p8026>, <https://ror.org/02kvxyf05>, <https://ror.org/02feahw73>, <https://team.inria.fr/wimmics/>;
+
+    dct:subject <https://dbpedia.org/page/DBpedia> ,<https://fr.dbpedia.org/page/DBpedia> , <https://dbpedia.org/page/French_language>, <https://dbpedia.org/page/Semantic_Web> ;
+    dcat:servesDataset db_fr: ;
+    sd:availableGraphs db_fr: ;
+    sd:defaultDataset db_fr:.
+    
+
+
+<https://ror.org/0496p8026>
+    a foaf:Organization;
+    foaf:name "University Côte d'Azur";
+    foaf:homepage <https://univ-cotedazur.fr>.
+
+<https://ror.org/02kvxyf05>
+    a foaf:Organization;
+    foaf:name "Inria";
     foaf:homepage <https://www.inria.fr>.
-<https://ror.org/02feahw73> a foaf:Organization; foaf:name "CNRS";
+
+<https://ror.org/02feahw73>
+    a foaf:Organization;
+    foaf:name "CNRS";
     foaf:homepage <https://www.cnrs.fr>.
+
 <https://team.inria.fr/wimmics/> a foaf:Organization; foaf:name "Wimmics research team".
+
+<https://orcid.org/0000-0001-9064-0463> a foaf:Person; foaf:name "Franck MICHEL".
+<https://orcid.org/0000-0003-0543-1232> a foaf:Person; foaf:name "Fabien Gandon".
+<https://orcid.org/0000-0002-7302-9037> a foaf:Person; foaf:name "Célian Ringwald".
+
+<http://fr.dbpedia.org/graph/metadata> 
+    a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset, schema:Dataset, prov:Entity; 
+    dct:title "Metadata describing the dataset and computed stats"@en;
+    dct:description "Metadata describing the dataset and computed stats"@en.
+
 
 <http://fr.dbpedia.org/graph/dbpedia_generic_article-templates> 
     a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset, schema:Dataset, prov:Entity; 
