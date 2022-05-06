@@ -1,3 +1,4 @@
+
 @prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix owl:        <http://www.w3.org/2002/07/owl#>.
@@ -78,6 +79,7 @@ db_fr:
         <http://fr.dbpedia.org/graph/dbpedia_generic_interlanguage-links>,
         <http://fr.dbpedia.org/graph/dbpedia_generic_labels>,
         <http://fr.dbpedia.org/graph/dbpedia_generic_page>,
+        <http://fr.dbpedia.org/graph/dbpedia_generic_images>, 
         <http://fr.dbpedia.org/graph/dbpedia_generic_redirects>,
         <http://fr.dbpedia.org/graph/dbpedia_generic_revisions>,
         <http://fr.dbpedia.org/graph/dbpedia_generic_topical-concepts>,
@@ -97,6 +99,8 @@ db_fr:
         <http://fr.dbpedia.org/graph/dbpedia_wikidata_instance-types>,
         <http://fr.dbpedia.org/graph/dbpedia_wikidata_mappingbased-literals>,
         <http://fr.dbpedia.org/graph/dbpedia_wikidata_mappingbased-objects-uncleaned>,
+        <http://fr.dbpedia.org/graph/dbpedia_wikidata_ontology-subclassof>,
+        <http://fr.dbpedia.org/graph/dbpedia_wikidata_sameas-external>,
         <http://fr.dbpedia.org/graph/dbpedia_wikidata_sameas-all-wikis>,
         <http://fr.dbpedia.org/graph/outlinks_yago_links>.
 
@@ -156,13 +160,10 @@ db_fr:sparql
     dct:title "Images"@en;
     dct:description "All the images included in a article"@en;    
     prov:hadPrimarySource <https://databus.dbpedia.org/dbpedia/generic/images/>;
-    void:vocabulary dc:, rdf:, foaf:, dbo: .
+    void:vocabulary dce:, rdf:, foaf:, dbo: .
 <https://databus.dbpedia.org/dbpedia/generic/images/>
     a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
     prov:wasGeneratedBy  <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/ImageExtractorNew.scala>;
-    prov:wasAttributedTo <https://dbpedia.org/>.
- <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/ImageExtractorNew.scala>
-    a schema:Code, prov:Entity; 
     prov:wasAttributedTo <https://dbpedia.org/>.
 
 <http://fr.dbpedia.org/graph/dbpedia_generic_article-templates> 
@@ -179,9 +180,6 @@ db_fr:sparql
     a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
     prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/ArticleTemplatesExtractor.scala>;
     prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/ArticleTemplatesExtractor.scala>  
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
 
 <http://fr.dbpedia.org/graph/dbpedia_generic_categories>   
     sd:name <http://fr.dbpedia.org/graph/dbpedia_generic_categories>   ;
@@ -193,15 +191,6 @@ db_fr:sparql
 <https://databus.dbpedia.org/dbpedia/generic/categories/>
     a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
     prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/SkosCategoriesExtractor.scala>, <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/CategoryLabelExtractor.scala>, <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/ArticleCategoriesExtractor.scala>; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/SkosCategoriesExtractor.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/CategoryLabelExtractor.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/ArticleCategoriesExtractor.scala>
-    a schema:Code, prov:Entity; 
     prov:wasAttributedTo <https://dbpedia.org/>.
 
 <http://fr.dbpedia.org/graph/dbpedia_generic_commons-sameas-links>   
@@ -218,9 +207,6 @@ db_fr:sparql
  a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
     prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/CommonsResourceExtractor.scala>;
     prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/CommonsResourceExtractor.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
 
 <http://fr.dbpedia.org/graph/dbpedia_generic_disambiguations>
     sd:name <http://fr.dbpedia.org/graph/dbpedia_generic_disambiguations>;
@@ -236,9 +222,6 @@ db_fr:sparql
  a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
     prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/DisambiguationExtractor.scala>; 
     prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/DisambiguationExtractor.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
 
 <http://fr.dbpedia.org/graph/dbpedia_generic_external-links>
     sd:name <http://fr.dbpedia.org/graph/dbpedia_generic_external-links>;
@@ -253,9 +236,6 @@ db_fr:sparql
     a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
     prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/ExternalLinksExtractor.scala>; 
     prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/ExternalLinksExtractor.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
 
 <http://fr.dbpedia.org/graph/dbpedia_generic_geo-coordinates>
     sd:name <http://fr.dbpedia.org/graph/dbpedia_generic_geo-coordinates>;
@@ -267,9 +247,6 @@ db_fr:sparql
 <https://databus.dbpedia.org/dbpedia/generic/geo-coordinates/>
     a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
     prov:wasGeneratedBy <https://github.com/datalogism/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/GeoExtractor.scala>; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/datalogism/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/GeoExtractor.scala>
-    a schema:Code, prov:Entity; 
     prov:wasAttributedTo <https://dbpedia.org/>.
 
 <http://fr.dbpedia.org/graph/dbpedia_generic_homepages>
@@ -285,9 +262,6 @@ db_fr:sparql
     a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
     prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/HomepageExtractor.scala>; 
     prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/HomepageExtractor.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
 
 <http://fr.dbpedia.org/graph/dbpedia_generic_infobox-properties>
     sd:name <http://fr.dbpedia.org/graph/dbpedia_generic_infobox-properties>;
@@ -300,9 +274,7 @@ db_fr:sparql
     a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
     prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/InfoboxExtractor.scala>; 
     prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/InfoboxExtractor.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
+
 
 <http://fr.dbpedia.org/graph/dbpedia_generic_infobox-property-definitions>
     sd:name <http://fr.dbpedia.org/graph/dbpedia_generic_infobox-property-definitions>;
@@ -329,10 +301,6 @@ db_fr:sparql
     a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
     prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/InterLanguageLinksExtractor.scala>;
     prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/InterLanguageLinksExtractor.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-
 
 <http://fr.dbpedia.org/graph/dbpedia_generic_labels>
     sd:name <http://fr.dbpedia.org/graph/dbpedia_generic_labels>;
@@ -345,9 +313,7 @@ db_fr:sparql
     a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
     prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/LabelExtractor.scala>; 
     prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/LabelExtractor.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
+
 
 <http://fr.dbpedia.org/graph/dbpedia_generic_page>
     sd:name <http://fr.dbpedia.org/graph/dbpedia_generic_page>;
@@ -359,12 +325,6 @@ db_fr:sparql
 <https://databus.dbpedia.org/dbpedia/generic/page/>
     a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
     prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/PageIdExtractor.scala>, <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/WikiPageLengthExtractor.scala>; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/PageIdExtractor.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/WikiPageLengthExtractor.scala>
-    a schema:Code, prov:Entity; 
     prov:wasAttributedTo <https://dbpedia.org/>.
 
 <http://fr.dbpedia.org/graph/dbpedia_generic_redirects>
@@ -381,9 +341,6 @@ db_fr:sparql
     a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
     prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/RedirectExtractor.scala>; 
     prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/RedirectExtractor.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
 
 <http://fr.dbpedia.org/graph/dbpedia_generic_revisions>
     sd:name <http://fr.dbpedia.org/graph/dbpedia_generic_revisions>;
@@ -395,9 +352,6 @@ db_fr:sparql
 <https://databus.dbpedia.org/dbpedia/generic/revisions/>
     a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
     prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/RevisionIdExtractor.scala>; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/RevisionIdExtractor.scala>
-    a schema:Code, prov:Entity; 
     prov:wasAttributedTo <https://dbpedia.org/>.
 
 
@@ -415,10 +369,7 @@ db_fr:sparql
     a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
     prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/TopicalConceptsExtractor.scala>; 
     prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/TopicalConceptsExtractor.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-
+    
 <http://fr.dbpedia.org/graph/dbpedia_generic_wikilinks>
     sd:name <http://fr.dbpedia.org/graph/dbpedia_generic_wikilinks>;
     a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Linkset, void:Dataset,schema:Dataset, prov:Entity; 
@@ -433,9 +384,6 @@ db_fr:sparql
     a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
     prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/PageLinksExtractor.scala>; 
     prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/PageLinksExtractor.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
 
 <http://fr.dbpedia.org/graph/dbpedia_generic_wikipedia-links>
     sd:name <http://fr.dbpedia.org/graph/dbpedia_generic_wikipedia-links>;
@@ -447,9 +395,6 @@ db_fr:sparql
 <https://databus.dbpedia.org/dbpedia/generic/wikipedia-links/>
     a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
     prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/ArticlePageExtractor.scala>; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/ArticlePageExtractor.scala>
-    a schema:Code, prov:Entity; 
     prov:wasAttributedTo <https://dbpedia.org/>.
 
 <http://fr.dbpedia.org/graph/dbpedia_mappings_geo-coordinates-mappingbased>
@@ -464,40 +409,6 @@ db_fr:sparql
     prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/GeoCoordinatesMapping.scala>; 
     prov:wasAttributedTo <https://dbpedia.org/>.
 
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/GeoCoordinatesMapping.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/CalculateMapping.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/CombineDateMapping.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/ConstantMapping.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/IntermediateNodeMapping.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/MappingExtractor.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/MappingExtractor.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/SimplePropertyMapping.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/TableMapping.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/TemplateMapping.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-<https://github.com/dbpedia/extraction-framework/blob/master/scripts/src/main/scala/org/dbpedia/extraction/scripts/TypeConsistencyCheck.scala>
-    a schema:Code, prov:Entity; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
-
 <http://fr.dbpedia.org/graph/dbpedia_mappings_instance-types>
     sd:name <http://fr.dbpedia.org/graph/dbpedia_mappings_instance-types>;
     a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset,schema:Dataset, prov:Entity; 
@@ -509,7 +420,6 @@ db_fr:sparql
     a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
     prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/MappingExtractor.scala>, <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/IntermediateNodeMapping.scala>, <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/TableMapping.scala>;
     prov:wasAttributedTo <https://dbpedia.org/>.
-
 
 <http://fr.dbpedia.org/graph/dbpedia_mappings_mappingbased-literals>
     sd:name <http://fr.dbpedia.org/graph/dbpedia_mappings_mappingbased-literals>;
@@ -559,22 +469,6 @@ db_fr:sparql
     prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/SimplePropertyMapping.scala>, <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/CalculateMapping.scala>;
     prov:wasAttributedTo <https://dbpedia.org/>.
 
-<http://fr.dbpedia.org/graph/dbpedia_ontology>
-    sd:name <http://fr.dbpedia.org/graph/dbpedia_ontology>;
-    a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset,schema:Dataset, prov:Entity; 
-    dct:title "Ontology DBpedia"@en;
-    dct:description "Last Version of DBpedia ontology"@en;
-    prov:hadPrimarySource <https://databus.dbpedia.org/ontologies/dbpedia.org/ontology/>; 
-    void:vocabulary  rdf: , rdfs: .
-
-<http://fr.dbpedia.org/graph/dbpedia_replaced-iris_labels>
-    sd:name <http://fr.dbpedia.org/graph/dbpedia_replaced-iris_labels>;
-    a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset,schema:Dataset, prov:Entity; 
-    dct:title "Replaced IRIs of DBpedia releases"@en;
-    dct:description "Replaced IRIs of DBpedia labels en -> fr "@en;
-    prov:hadPrimarySource <https://databus.dbpedia.org/vehnem/replaced-iris/>; 
-    void:vocabulary  rdfs: .
-
 <http://fr.dbpedia.org/graph/dbpedia_text_long-abstracts>
     sd:name <http://fr.dbpedia.org/graph/dbpedia_text_long-abstracts>;
     a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset,schema:Dataset, prov:Entity; 
@@ -591,7 +485,6 @@ db_fr:sparql
     prov:hadPrimarySource <https://databus.dbpedia.org/dbpedia/text/short-abstracts/>; 
     void:vocabulary  dbo: .
 
-https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataR2RExtractor.scala
 <http://fr.dbpedia.org/graph/dbpedia_wikidata_geo-coordinates>
     sd:name <http://fr.dbpedia.org/graph/dbpedia_wikidata_geo-coordinates>;
     a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset,schema:Dataset, prov:Entity; 
@@ -599,16 +492,23 @@ https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/
     dct:description "Geographic coordinates extracted from Wikidata, subject are wikidata based URI"@en;
     prov:hadPrimarySource <https://databus.dbpedia.org/dbpedia/wikidata/geo-coordinates/>; 
     void:vocabulary  georss:,  rdf: , geo: .
+<https://databus.dbpedia.org/dbpedia/wikidata/geo-coordinates/>
+    a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
+    prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataR2RExtractor.scala>; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
 
-https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataR2RExtractor.scala
-<http://fr.dbpedia.org/graph/dbpedia_wikidata_instance-types>
-    sd:name <http://fr.dbpedia.org/graph/dbpedia_wikidata_instance-types>;
+<http://fr.dbpedia.org/graph/dbpedia_wikidata_ontology-subclassof>
+    sd:name <http://fr.dbpedia.org/graph/dbpedia_wikidata_ontology-subclassof>;
     a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset,schema:Dataset, prov:Entity; 
-    dct:title "Wikidata Instance Types"@en;
-    dct:description "Geographic coordinates extracted from Wikidata, subject are wikidata based URI"@en;
-    prov:hadPrimarySource <https://databus.dbpedia.org/dbpedia/wikidata/instance-types/>; 
-    void:vocabulary  rdf: .
-https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataR2RExtractor.scala
+    dct:title "Wikidata objects subclass"@en;
+    dct:description "State that all the instances of one class are instances of another"@en;
+    prov:hadPrimarySource <https://databus.dbpedia.org/dbpedia/wikidata/ontology-subclassof/>; 
+    void:vocabulary  rdfs: .
+<https://databus.dbpedia.org/dbpedia/wikidata/ontology-subclassof/>
+    a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
+    prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataR2RExtractor.scala>; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+
 <http://fr.dbpedia.org/graph/dbpedia_wikidata_mappingbased-literals>
     sd:name <http://fr.dbpedia.org/graph/dbpedia_wikidata_mappingbased-literals>;
     a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset,schema:Dataset, prov:Entity; 
@@ -616,7 +516,11 @@ https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/
     dct:description "High-quality data extracted using the mapping-based extraction (Literal properties only), subject are wikidata based URI"@en;
     prov:hadPrimarySource <https://databus.dbpedia.org/dbpedia/wikidata/mappingbased-literals/>; 
     void:vocabulary  dbo: .
-https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataR2RExtractor.scala
+<https://databus.dbpedia.org/dbpedia/wikidata/mappingbased-literals/>
+    a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
+    prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataR2RExtractor.scala>; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+
 <http://fr.dbpedia.org/graph/dbpedia_wikidata_mappingbased-objects-uncleaned>
     sd:name <http://fr.dbpedia.org/graph/dbpedia_wikidata_mappingbased-objects-uncleaned>;
     a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset,schema:Dataset, prov:Entity; 
@@ -624,22 +528,140 @@ https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/
     dct:description "High-quality data extracted using the mapping-based extraction (Object properties only), subject are wikidata based URI"@en;
     prov:hadPrimarySource <https://databus.dbpedia.org/dbpedia/wikidata/mappingbased-objects-uncleaned/>; 
     void:vocabulary  dbo: , rdfs: .
-https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataLLExtractor.scala
-https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataSameAsExtractor.scala
-<http://fr.dbpedia.org/graph/dbpedia_wikidata_sameas-all-wikis>
-    sd:name <http://fr.dbpedia.org/graph/dbpedia_wikidata_sameas-all-wikis>;
+<https://databus.dbpedia.org/dbpedia/wikidata/mappingbased-objects-uncleaned/>
+    a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset; 
+    prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataR2RExtractor.scala>; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+
+<http://fr.dbpedia.org/graph/dbpedia_wikidata_sameas-external>
+    sd:name <http://fr.dbpedia.org/graph/dbpedia_wikidata_instance-types>;
     a sd:Graph, sd:NamedGraph,  dcat:Dataset,void:Linkset, void:Dataset,schema:Dataset, prov:Entity; 
     dct:title "Wikidata sameAs external"@en;
-    dct:description "External sameas, subject are wikidata based URI"@en;
+    dct:description "External sameas from wikidata"@en;
     prov:hadPrimarySource <https://databus.dbpedia.org/dbpedia/wikidata/sameas-external/>; 
-    void:vocabulary  owl: ;
-    void:linkPredicate owl:sameAs ;
-    void:subjectsTarget dbr_wd: .
-
-<http://fr.dbpedia.org/graph/outlinks_yago_links>
-    sd:name <http://fr.dbpedia.org/graph/outlinks_yago_links>; 
-    a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset,schema:Dataset, prov:Entity; 
-    dct:title "2016 version of Yago ontology : contains links, toxonomy and instance-types : from Dbpedia entity to Yago"@en;
-    dct:description "External sameas, subject are wikidata based URI"@en;
-    prov:hadPrimarySource <https://databus.dbpedia.org/vehnem/yago/>; 
     void:vocabulary  owl: .
+ <https://databus.dbpedia.org/dbpedia/wikidata/sameas-external/>
+    a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
+    prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataR2RExtractor.scala>, <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataSameAsExtractor.scala> ;  
+    prov:wasAttributedTo <https://dbpedia.org/>.
+
+<http://fr.dbpedia.org/graph/dbpedia_wikidata_sameas-all-wikis>
+    sd:name <http://fr.dbpedia.org/graph/dbpedia_wikidata_sameas-all-wikis>;
+    a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Linkset, void:Dataset,schema:Dataset, prov:Entity; 
+    dct:title "Wikidata sameAs between wiki"@en;
+    dct:description "Inter-DBpedia sameas from wikidata"@en;
+    prov:hadPrimarySource <https://databus.dbpedia.org/dbpedia/wikidata/sameas-all-wikis/>; 
+    void:vocabulary  owl: ;
+    void:linkPredicate owl:sameAs .
+<https://databus.dbpedia.org/dbpedia/wikidata/sameas-all-wikis/>
+    a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
+    prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataR2RExtractor.scala>, <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataSameAsExtractor.scala> ; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+
+<http://fr.dbpedia.org/graph/dbpedia_ontology>
+    sd:name <http://fr.dbpedia.org/graph/dbpedia_ontology>;
+    a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset,schema:Dataset, prov:Entity; 
+    dct:title "Ontology DBpedia"@en;
+    dct:description "Last Version of DBpedia ontology"@en;
+    prov:hadPrimarySource <https://databus.dbpedia.org/ontologies/dbpedia.org/ontology/>; 
+    void:vocabulary  rdf: , rdfs: .
+
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataSameAsExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/LabelExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataR2RExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/GeoCoordinatesMapping.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/CalculateMapping.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/CombineDateMapping.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/ConstantMapping.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/IntermediateNodeMapping.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/MappingExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/MappingExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/SimplePropertyMapping.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/TableMapping.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/TemplateMapping.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/scripts/src/main/scala/org/dbpedia/extraction/scripts/TypeConsistencyCheck.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+ <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/ImageExtractorNew.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/ArticleTemplatesExtractor.scala>  
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/SkosCategoriesExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/CategoryLabelExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/ArticleCategoriesExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/CommonsResourceExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/DisambiguationExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/ExternalLinksExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/datalogism/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/GeoExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/HomepageExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/InfoboxExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/InterLanguageLinksExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/PageIdExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/WikiPageLengthExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/RedirectExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/RevisionIdExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/TopicalConceptsExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/PageLinksExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
+<https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/ArticlePageExtractor.scala>
+    a schema:Code, prov:Entity; 
+    prov:wasAttributedTo <https://dbpedia.org/>.
