@@ -64,7 +64,8 @@ db_fr:
     void:uriLookupEndpoint <http://prod-dbpedia.inria.fr/describe/?url=>;
 
     dct:subject <https://dbpedia.org/page/DBpedia> ,<https://fr.dbpedia.org/page/DBpedia> , <https://dbpedia.org/page/French_language>, <https://dbpedia.org/page/Semantic_Web> ;
-
+    void:uriSpace "http://fr.dbpedia.org/resource/";
+    void:uriRegexPattern "^http://fr\\.dbpedia\\.org/resource/";
     sd:namedGraph 
         <http://fr.dbpedia.org/graph/metadata>,
         <http://fr.dbpedia.org/graph/dbpedia_generic_article-templates>,
