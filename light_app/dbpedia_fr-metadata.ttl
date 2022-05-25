@@ -501,7 +501,7 @@ db_fr:sparql
     sd:name <http://fr.dbpedia.org/graph/dbpedia_wikidata_ontology-subclassof>;
     a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset,schema:Dataset, prov:Entity; 
     dct:title "Wikidata objects subclass"@en;
-    dct:description "State that all the instances of one class are instances of another"@en;
+    dct:description "State that all the instances of one class are instances of another, for example : a 'human brain' is a subclass of 'brain'"@en;
     prov:hadPrimarySource <https://databus.dbpedia.org/dbpedia/wikidata/ontology-subclassof/>; 
     void:vocabulary  rdfs: .
 <https://databus.dbpedia.org/dbpedia/wikidata/ontology-subclassof/>
@@ -513,7 +513,7 @@ db_fr:sparql
     sd:name <http://fr.dbpedia.org/graph/dbpedia_wikidata_mappingbased-literals>;
     a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset,schema:Dataset, prov:Entity; 
     dct:title "Wikidata Mappingbased Literals"@en;
-    dct:description "High-quality data extracted using the mapping-based extraction (Literal properties only), subject are wikidata based URI"@en;
+    dct:description "Wikidata litterals data with mapped properties to the DBpedia ontology, the subjects existing in DBpedia Fr are identified by a dbpedia.fr URI the others by a wikidata URI"@en;
     prov:hadPrimarySource <https://databus.dbpedia.org/dbpedia/wikidata/mappingbased-literals/>; 
     void:vocabulary  dbo: .
 <https://databus.dbpedia.org/dbpedia/wikidata/mappingbased-literals/>
@@ -524,8 +524,7 @@ db_fr:sparql
 <http://fr.dbpedia.org/graph/dbpedia_wikidata_mappingbased-objects-uncleaned>
     sd:name <http://fr.dbpedia.org/graph/dbpedia_wikidata_mappingbased-objects-uncleaned>;
     a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset,schema:Dataset, prov:Entity; 
-    dct:title "Wikidata mappingbased Objects uncleaned"@en;
-    dct:description "High-quality data extracted using the mapping-based extraction (Object properties only), subject are wikidata based URI"@en;
+    dct:title "Wikidata objects data with mapped properties to the DBpedia ontology, the subjects existing in DBpedia Fr are identified by a dbpedia.fr URI the others by a wikidata URI"@en;
     prov:hadPrimarySource <https://databus.dbpedia.org/dbpedia/wikidata/mappingbased-objects-uncleaned/>; 
     void:vocabulary  dbo: , rdfs: .
 <https://databus.dbpedia.org/dbpedia/wikidata/mappingbased-objects-uncleaned/>
@@ -536,7 +535,7 @@ db_fr:sparql
 <http://fr.dbpedia.org/graph/dbpedia_wikidata_sameas-external>
     sd:name <http://fr.dbpedia.org/graph/dbpedia_wikidata_instance-types>;
     a sd:Graph, sd:NamedGraph,  dcat:Dataset,void:Linkset, void:Dataset,schema:Dataset, prov:Entity; 
-    dct:title "Wikidata sameAs external"@en;
+    dct:title "Wikidata sameAs external to the Wikimedia ecosystem"@en;
     dct:description "External sameas from wikidata"@en;
     prov:hadPrimarySource <https://databus.dbpedia.org/dbpedia/wikidata/sameas-external/>; 
     void:vocabulary  owl: .
