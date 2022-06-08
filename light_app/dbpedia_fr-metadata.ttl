@@ -61,7 +61,7 @@ db_fr:
         dcat:mediaType  "application/sparql-query"
     ] ;
 
-    void:uriLookupEndpoint <http://pfr.dbpedia.org/describe/?url=>;
+    void:uriLookupEndpoint <http://fr.dbpedia.org/describe/?url=>;
 
     dct:subject <https://dbpedia.org/page/DBpedia> ,<https://fr.dbpedia.org/page/DBpedia> , <https://dbpedia.org/page/French_language>, <https://dbpedia.org/page/Semantic_Web> ;
     void:uriSpace "http://fr.dbpedia.org/resource/";
