@@ -45,11 +45,11 @@ db_fr:
 
     dct:licence     <https://creativecommons.org/licenses/by-nc/4.0/>;
     schema:licence  <https://creativecommons.org/licenses/by-nc/4.0/>;
-    void:dataDump <http://prod-dbpedia.inria.fr/dumps/> ;
+    void:dataDump <http://fr.dbpedia.org/dumps/> ;
     dcat:distribution [
         a                   dcat:Distribution ;
         dct:title           "Dumps of the data used for building this endpoint" ;
-        dcat:downloadUrl    <http://prod-dbpedia.inria.fr/dumps/> ;
+        dcat:downloadUrl    <http://fr.dbpedia.org/dumps/> ;
         dct:format          "text/turtle"
     ] ;
 
@@ -61,7 +61,7 @@ db_fr:
         dcat:mediaType  "application/sparql-query"
     ] ;
 
-    void:uriLookupEndpoint <http://prod-dbpedia.inria.fr/describe/?url=>;
+    void:uriLookupEndpoint <http://pfr.dbpedia.org/describe/?url=>;
 
     dct:subject <https://dbpedia.org/page/DBpedia> ,<https://fr.dbpedia.org/page/DBpedia> , <https://dbpedia.org/page/French_language>, <https://dbpedia.org/page/Semantic_Web> ;
     void:uriSpace "http://fr.dbpedia.org/resource/";
