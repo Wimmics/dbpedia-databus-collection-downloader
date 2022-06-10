@@ -1,0 +1,10 @@
+version: "3.0"
+services:
+  databus-download:
+    build :
+       context: .
+       dockerfile: Dockerfile.light
+    image: dbpedia/dbpedia-databus-collection-downloader:new
+    env_file: .env.light
+    volumes:
+      - /appli/databus-data_test/:/root/data
