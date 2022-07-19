@@ -53,7 +53,7 @@ db_fr:
         dct:format          "text/turtle"
     ] ;
 
-    dcat:service db_fr:sparql ;
+    dcat:accessService db_fr:sparql ;
     dcat:distribution [
         a               dcat:Distribution ;
         dct:title       "This dataset's endpoint" ;
