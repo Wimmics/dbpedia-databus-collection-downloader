@@ -104,8 +104,7 @@ db_fr:
         <http://fr.dbpedia.org/graph/dbpedia_wikidata_sameas-external>,
         <http://fr.dbpedia.org/graph/dbpedia_wikidata_sameas-all-wikis>,
         <http://fr.dbpedia.org/graph/dbpedia_wikidata_labels>,
-        <http://fr.dbpedia.org/graph/dbpedia_wikidata_description>,
-        <http://fr.dbpedia.org/graph/outlinks_yago_links>.
+        <http://fr.dbpedia.org/graph/dbpedia_wikidata_description>.
 
 # --- SPARQL Service Description and DCAT DataService
 db_fr:sparql
