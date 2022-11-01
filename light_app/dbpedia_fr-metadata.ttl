@@ -68,6 +68,7 @@ db_fr:
     void:uriRegexPattern "^http://fr\\.dbpedia\\.org/resource/";
     sd:namedGraph 
         <http://fr.dbpedia.org/graph/metadata>,
+        <http://fr.dbpedia.org/graph/statistics>,
         <http://fr.dbpedia.org/graph/dbpedia_generic_article-templates>,
         <http://fr.dbpedia.org/graph/dbpedia_generic_categories>,
         <http://fr.dbpedia.org/graph/dbpedia_generic_commons-sameas-links>,
@@ -153,8 +154,14 @@ db_fr:sparql
 <http://fr.dbpedia.org/graph/metadata> 
     sd:name <http://fr.dbpedia.org/graph/metadata> ;
     a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset, schema:Dataset, prov:Entity; 
-    dct:title "Metadata describing the dataset and computed stats"@en;
-    dct:description "Metadata describing the dataset and computed stats"@en.
+    dct:title "Metadata describing the dataset"@en;
+    dct:description "Metadata describing the dataset "@en.
+
+<http://fr.dbpedia.org/graph/statistics> 
+    sd:name <http://fr.dbpedia.org/graph/statistics> ;
+    a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset, schema:Dataset, prov:Entity; 
+    dct:title "Statistics computed on the dataset"@en;
+    dct:description "Statistics computed on the dataset"@en.
 
 <http://fr.dbpedia.org/graph/dbpedia_generic_images> 
     sd:name <http://fr.dbpedia.org/graph/dbpedia_generic_images> ;
