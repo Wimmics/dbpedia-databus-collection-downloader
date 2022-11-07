@@ -69,6 +69,7 @@ db_fr:
     sd:namedGraph 
         <http://fr.dbpedia.org/graph/metadata>,
         <http://fr.dbpedia.org/graph/statistics>,
+        <http://fr.dbpedia.org/graph/process_tags>,
         <http://fr.dbpedia.org/graph/dbpedia_generic_article-templates>,
         <http://fr.dbpedia.org/graph/dbpedia_generic_categories>,
         <http://fr.dbpedia.org/graph/dbpedia_generic_commons-sameas-links>,
@@ -162,6 +163,14 @@ db_fr:sparql
     a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset, schema:Dataset, prov:Entity; 
     dct:title "Statistics computed on the dataset"@en;
     dct:description "Statistics computed on the dataset"@en.
+    prov:wasGeneratedBy  <https://github.com/Wimmics/dbpedia-virtuoso-sparql-endpoint-quickstart/blob/test3/dbpedia-loader/process/stats_process.sh>;
+
+<http://fr.dbpedia.org/graph/process_tags> 
+    sd:name <http://fr.dbpedia.org/graph/process_tags> ;
+    a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset, schema:Dataset, prov:Entity; 
+    dct:title "Fr Process tags"@en;
+    dct:description "Tag used for highlighting annotations added during Fr process"@en.
+    prov:wasGeneratedBy  <https://github.com/Wimmics/dbpedia-virtuoso-sparql-endpoint-quickstart/blob/test3/dbpedia-loader/process/stats_process.sh>;   
 
 <http://fr.dbpedia.org/graph/dbpedia_generic_images> 
     sd:name <http://fr.dbpedia.org/graph/dbpedia_generic_images> ;
@@ -255,8 +264,9 @@ db_fr:sparql
     void:vocabulary  georss:,  rdf: , geo: .
 <https://databus.dbpedia.org/dbpedia/generic/geo-coordinates/>
     a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
-    prov:wasGeneratedBy <https://github.com/datalogism/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/GeoExtractor.scala>; 
-    prov:wasAttributedTo <https://dbpedia.org/>.
+    prov:wasGeneratedBy  <https://github.com/Wimmics/dbpedia-virtuoso-sparql-endpoint-quickstart/blob/test3/dbpedia-loader/process/stats_process.sh>;
+    prov:wasDerivedFrom <https://github.com/datalogism/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/GeoExtractor.scala>; 
+    prov:wasAttributedTo <https://fr.dbpedia.org/>.
 
 <http://fr.dbpedia.org/graph/dbpedia_generic_homepages>
     sd:name <http://fr.dbpedia.org/graph/dbpedia_generic_homepages>;
