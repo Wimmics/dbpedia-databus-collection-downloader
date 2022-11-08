@@ -162,15 +162,15 @@ db_fr:sparql
     sd:name <http://fr.dbpedia.org/graph/statistics> ;
     a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset, schema:Dataset, prov:Entity; 
     dct:title "Statistics computed on the dataset"@en;
-    dct:description "Statistics computed on the dataset"@en.
-    prov:wasGeneratedBy  <https://github.com/Wimmics/dbpedia-virtuoso-sparql-endpoint-quickstart/blob/test3/dbpedia-loader/process/stats_process.sh>;
+    dct:description "Statistics computed on the dataset"@en;
+    prov:wasGeneratedBy  <https://github.com/Wimmics/dbpedia-virtuoso-sparql-endpoint-quickstart/blob/test3/dbpedia-loader/process/stats_process.sh>.
 
 <http://fr.dbpedia.org/graph/process_tags> 
     sd:name <http://fr.dbpedia.org/graph/process_tags> ;
     a sd:Graph, sd:NamedGraph,  dcat:Dataset, void:Dataset, schema:Dataset, prov:Entity; 
     dct:title "Fr Process tags"@en;
-    dct:description "Tag used for highlighting annotations added during Fr process"@en.
-    prov:wasGeneratedBy  <https://github.com/Wimmics/dbpedia-virtuoso-sparql-endpoint-quickstart/blob/test3/dbpedia-loader/process/stats_process.sh>;   
+    dct:description "Tag used for highlighting annotations added during Fr process"@en;
+    prov:wasGeneratedBy  <https://github.com/Wimmics/dbpedia-virtuoso-sparql-endpoint-quickstart/blob/test3/dbpedia-loader/process/stats_process.sh>.   
 
 <http://fr.dbpedia.org/graph/dbpedia_generic_images> 
     sd:name <http://fr.dbpedia.org/graph/dbpedia_generic_images> ;
@@ -587,7 +587,7 @@ db_fr:sparql
 
 <https://databus.dbpedia.org/dbpedia/wikidata/labels/>
     a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
-    prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataLabelExtractor.scala>.
+    prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataLabelExtractor.scala>;
     prov:wasAttributedTo <https://dbpedia.org/>.
 
 
@@ -602,7 +602,7 @@ db_fr:sparql
 
 <https://databus.dbpedia.org/dbpedia/wikidata/description/>
     a prov:Entity,  dcat:Dataset, void:Dataset, schema:Dataset;
-    prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataDescriptionExtractor.scala>.
+    prov:wasGeneratedBy <https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/mappings/wikidata/WikidataDescriptionExtractor.scala>;
     prov:wasAttributedTo <https://dbpedia.org/>.
 
 <http://fr.dbpedia.org/graph/dbpedia_ontology>
